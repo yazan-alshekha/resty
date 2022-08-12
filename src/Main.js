@@ -5,13 +5,16 @@ import { useState, useEffect } from "react";
 // import "./Header.css";
 import "./style.css";
 import Form from "./components/Form";
+import ResponseSection from "./components/ResponseSection";
 
 export default function Main() {
 
     const [choosenButton, setChoosenButton] = useState("null");
     const [apiRequest, setApiRequest] = useState("null");
     const [apiResult, setApiResult] = useState("null");
-
+    const [resultComponentValue, setResultComponentValue] = useState("null");
+    const [arrayRequests,setArrayrequest]=useState([]);
+   
     // useEffect(() => {
 
     //     console.log('useEffect');
@@ -21,7 +24,7 @@ export default function Main() {
     // }, [choosenButton]);
 
     const buttonValueFunc = (value) => {
-        // console.log(value);
+       
 
         setChoosenButton(value);
     }
@@ -33,9 +36,11 @@ export default function Main() {
 
         if (choosenButton == 'get') {
             result = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+            // result = await axios.get(apiRequest);
         }
         else if (choosenButton == 'delete') {
             result = await axios.delete("https://jsonplaceholder.typicode.com/todos/1");
+            
 
         }
         else if (choosenButton == 'put') {
@@ -43,34 +48,38 @@ export default function Main() {
 
         }
         else if (choosenButton == 'post') {
-            result = await axios.post("https://jsonplaceholder.typicode.com/todos/1", body);
+            // result = await axios.post("https://jsonplaceholder.typicode.com/todos/1", body);
+            result = await axios.post(apiRequest,body);
+
 
         }
+        await setApiResult(result);
+
+        await setResultComponentValue(result.data.id);
+
+        arrayRequests.push(
+            {
+                request:apiRequest,
+                type:choosenButton
+            }
+            );
+
+        await setArrayrequest(arrayRequests);
         
-
-        console.log(result);
-        setApiResult(result);
-
-
 
     }
 
     const getUrl = (e) => {
-
+        // console.log(e.target.value);
         setApiRequest(e.target.value);
 
     }
-
+    
     return (
         <>
-            <p>Hello main</p>
-
             <Form buttonValue={buttonValueFunc} goButton={goButton} getUrl={getUrl} />
-            <section>
-                <textarea>
-
-                </textarea>
-            </section>
+            
+            <ResponseSection apiResponse={apiResult} arrayRequests={arrayRequests} choosenButton={choosenButton}/>
         </>
     );
 }

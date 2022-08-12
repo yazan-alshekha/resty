@@ -8,11 +8,7 @@ export default function Form(props) {
             <input type="text" className="UrlInput" onChange={props.getUrl}></input>
             <button onClick={ props.goButton }>Go</button>
 
-
-
-
-
-            <div>
+            <div className="buttons">
                 <button onClick={() => props.buttonValue('get')}>GET</button>
                 <button onClick={() => props.buttonValue('post')}>POST</button>
                 <button onClick={() => props.buttonValue('put')}>PUT</button>
