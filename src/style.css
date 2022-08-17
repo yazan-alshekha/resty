@@ -1,24 +1,55 @@
 body{
-    background-color: rgb(202, 197, 197);
+    background-color: rgba(239, 236, 236, 0.992);
 }
 
 
 button{
-    width:45px;
+    margin: 10px;
+    padding: 5px;
+    width:50px;
     height: 30px;
-    font-size: xx-small;
+    font-size: x-small;
+    
 }
 
 input.UrlInput{
     width: 500px;
+    height: 20px;
 }
 
-textarea{
-    width: 300px;
-    height: 300px;
+div.textarea{
+    position: absolute;
+    right:0px;
+
+    width: 38%;
+    height: 50%;
     background-color: whitesmoke;
+    padding: 10px;
+    margin-right: 20px;
+    overflow: auto;
 }
+
+div.HTTP_methods_section{
+    position:absolute;
+    left: 0px;
+
+    width: 50%;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+section{
+    width: 100%;
+    background-color: rgb(75, 115, 115);
+    margin-top: 20px;
+    height: 80%;
+    background-color: aqua;
+
+}
+
 
 button:focus{
-    background-color: rgb(225, 215, 215);
+    border: none;
+    background-color: hwb(0 75% 22% / 0.811);
 }
+
