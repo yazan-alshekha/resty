@@ -14,6 +14,7 @@ export default function ResponseSection(props) {
 
                 </div>
 
+                <div className="HTTP_methods_section">
                 {props.arrayRequests.map((item, idx) => {
                     return <Request
                         type={item.type}
@@ -21,6 +22,9 @@ export default function ResponseSection(props) {
                         key={idx}
                     />
                 })}
+                
+
+                </div>
             </section>
         </>
     );

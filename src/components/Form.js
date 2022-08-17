@@ -4,7 +4,7 @@ export default function Form(props) {
     return (
         <>
 
-            <a>URL</a>
+            <span>URL : </span>
             <input type="text" className="UrlInput" onChange={props.getUrl}></input>
             <button onClick={ props.goButton }>Go</button>
 
@@ -13,7 +13,7 @@ export default function Form(props) {
                 <button onClick={() => props.buttonValue('post')}>POST</button>
                 <button onClick={() => props.buttonValue('put')}>PUT</button>
                 <button onClick={() => props.buttonValue('delete')}>DELETE</button>
-                <input type="text" className="UrlInput"></input>
+                <input type="text" className="UrlInput" onChange={props.requestBody}></input>
             </div>
 
         </>
